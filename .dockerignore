@@ -1,0 +1,22 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+!index.html
+
+# Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore

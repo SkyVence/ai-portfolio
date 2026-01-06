@@ -1,0 +1,11 @@
+services:
+  portfolio:
+    container_name: ai-portfolio
+    image: ghcr.io/skyvence/ai-portfolio:latest
+    restart: unless-stopped
+    networks:
+      - caddy_network
+
+networks:
+  caddy_network:
+    external: true

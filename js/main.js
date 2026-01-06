@@ -1,0 +1,222 @@
+/**
+ * ==========================================
+ * PORTFOLIO MAIN JAVASCRIPT
+ * Handles animations and interactivity
+ * ==========================================
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+    initScrollAnimations();
+    initSmoothScrollingWithFade();
+    initActiveNavigation();
+    initTimelineLines();
+    initContactForm();
+});
+
+/**
+ * Scroll-triggered animations using Intersection Observer
+ */
+function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Optional: unobserve after animation (uncomment to animate only once)
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of element is visible
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
+}
+
+/**
+ * Smooth scrolling with fade transition for navigation links
+ */
+function initSmoothScrollingWithFade() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    const overlay = document.getElementById('page-transition');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Fade out
+                overlay.classList.add('active');
+                
+                setTimeout(() => {
+                    // Scroll to target
+                    const offsetTop = targetElement.offsetTop - 80; // Account for fixed nav
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'instant' // Use instant since we're doing a fade
+                    });
+                    
+                    // Fade in
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                    }, 100);
+                }, 300); // Wait for fade out
+            }
+        });
+    });
+}
+
+/**
+ * Update active navigation link based on scroll position
+ */
+function initActiveNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                
+                // Remove active class from all links
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to corresponding link
+                const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-50% 0px -50% 0px', // Trigger when section is in middle of viewport
+        threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+/**
+ * Initialize timeline lines with gaps around dates
+ */
+function initTimelineLines() {
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    // Wait for layout to settle
+    requestAnimationFrame(() => {
+        projectItems.forEach((item, index) => {
+            const dateEl = item.querySelector('.project-date');
+            const topLine = item.querySelector('.timeline-line-top');
+            const bottomLine = item.querySelector('.timeline-line-bottom');
+            
+            if (!dateEl) return;
+            
+            const itemRect = item.getBoundingClientRect();
+            const dateRect = dateEl.getBoundingClientRect();
+            
+            // Calculate date position relative to item
+            const dateTop = dateRect.top - itemRect.top;
+            const dateBottom = dateRect.bottom - itemRect.top;
+            const dateHeight = dateRect.height;
+            const gap = 6; // Gap around the date
+            
+            // Top line: from top of item to just above date
+            if (topLine && index > 0) {
+                topLine.style.top = '0';
+                topLine.style.height = `${dateTop - gap}px`;
+            }
+            
+            // Bottom line: from just below date to bottom of item
+            if (bottomLine) {
+                const bottomStart = dateBottom + gap;
+                const bottomHeight = itemRect.height - bottomStart;
+                bottomLine.style.top = `${bottomStart}px`;
+                bottomLine.style.height = `${bottomHeight}px`;
+            }
+        });
+    });
+    
+    // Recalculate on resize
+    window.addEventListener('resize', debounce(() => {
+        initTimelineLines();
+    }, 100));
+}
+
+/**
+ * ==========================================
+ * UTILITY FUNCTIONS
+ * Add more functionality as needed
+ * ==========================================
+ */
+
+/**
+ * Contact form handler - opens email client with prefilled data
+ * EDIT: Change the email address below to your own
+ */
+const CONTACT_EMAIL = 'your.email@example.com';
+
+function initContactForm() {
+    const form = document.getElementById('contact-form');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Build the mailto link with prefilled data
+        const body = `Hi,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${email}`;
+        
+        const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Create a temporary link and click it
+        const link = document.createElement('a');
+        link.href = mailtoLink;
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+}
+
+/**
+ * Debounce function for performance optimization
+ * @param {Function} func - Function to debounce
+ * @param {number} wait - Wait time in milliseconds
+ */
+function debounce(func, wait = 10) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+/**
+ * Check if element is in viewport
+ * @param {Element} el - Element to check
+ * @returns {boolean}
+ */
+function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}

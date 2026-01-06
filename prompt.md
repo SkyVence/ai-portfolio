@@ -53,3 +53,6 @@ The docker image can be hosted on ghcr.io for this matter i want you to make a g
 
 ## Prompt 7
 Update why.html to include the latest logs
+
+## Prompt 8
+Add a small readme with a ci tag (skyvence/ai-portfolio) and update the necessary file like why.html.

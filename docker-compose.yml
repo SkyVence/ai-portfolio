@@ -1,11 +1,12 @@
 services:
-  portfolio:
-    container_name: ai-portfolio
+  ai-portfolio:
     image: ghcr.io/skyvence/ai-portfolio:latest
-    restart: unless-stopped
     networks:
-      - caddy_network
+      - proxy-net
+    labels:
+      - "shepherd.enable=true"
+      - "shepherd.auth.config=default"
 
 networks:
-  caddy_network:
+  proxy-net:
     external: true

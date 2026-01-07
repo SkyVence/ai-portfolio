@@ -76,3 +76,6 @@ Update the docker deployment for docker stack (Current docker compose), standalo
 
 ## Prompt 3
 Update readme to reflect the latest changes. Change npx to bun
+
+## Prompt 4
+Oh weird issue your tagging system doesnt show up correctly and does not work. It seems like on the hosted version it doesn't have styling nor does it work as button

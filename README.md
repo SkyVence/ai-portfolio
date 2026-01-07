@@ -9,7 +9,7 @@ A dark-themed portfolio website built entirely through AI prompts as an educatio
 
 ```bash
 # Local development
-bun serve .
+bun index.html why/index.html
 
 # Deploy via Docker (standalone)
 docker run -d --name ai-portfolio -p 8080:80 ghcr.io/skyvence/ai-portfolio:latest

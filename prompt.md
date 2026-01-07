@@ -62,3 +62,17 @@ Here is an issue for you when hosting the website the image in /img/* doesnt res
 
 ## Prompt 10
 I still get a 404 in the network tab of my browser and the image doesnt show up.
+
+# Session 3
+
+## Prompt 0
+I want you to add a simple filter on the timeline for the project. This filter should have different tag like: web, prog, gamedev.
+
+## Prompt 1
+Update the why page with a link to the source code use the git remote for the link (translate to https)
+
+## Prompt 2
+Update the docker deployment for docker stack (Current docker compose), standalone, docker compose. Make a seperate folder to hold those configs.
+
+## Prompt 3
+Update readme to reflect the latest changes. Change npx to bun

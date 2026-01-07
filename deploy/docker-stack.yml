@@ -1,0 +1,22 @@
+# Docker Stack deployment (for Docker Swarm)
+# Usage: docker stack deploy -c docker-stack.yml ai-portfolio
+
+services:
+  ai-portfolio:
+    image: ghcr.io/skyvence/ai-portfolio:latest
+    networks:
+      - proxy-net
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    labels:
+      - "shepherd.enable=true"
+      - "shepherd.auth.config=default"
+
+networks:
+  proxy-net:
+    external: true

@@ -1,0 +1,10 @@
+# Docker Compose deployment (standard)
+# Usage: docker compose -f deploy/docker-compose.yml up -d
+
+services:
+  ai-portfolio:
+    image: ghcr.io/skyvence/ai-portfolio:latest
+    container_name: ai-portfolio
+    ports:
+      - "8080:80"
+    restart: unless-stopped

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNavigation();
     initTimelineLines();
     initContactForm();
+    initProjectFilters();
 });
 
 /**
@@ -106,7 +107,16 @@ function initActiveNavigation() {
  * Initialize timeline lines with gaps around dates
  */
 function initTimelineLines() {
-    const projectItems = document.querySelectorAll('.project-item');
+    const projectItems = document.querySelectorAll('.project-item:not(.filtered-out)');
+    const allProjectItems = document.querySelectorAll('.project-item');
+    
+    // Hide all timeline lines first
+    allProjectItems.forEach(item => {
+        const topLine = item.querySelector('.timeline-line-top');
+        const bottomLine = item.querySelector('.timeline-line-bottom');
+        if (topLine) topLine.style.display = 'none';
+        if (bottomLine) bottomLine.style.display = 'none';
+    });
     
     // Wait for layout to settle
     requestAnimationFrame(() => {
@@ -126,16 +136,18 @@ function initTimelineLines() {
             const dateHeight = dateRect.height;
             const gap = 6; // Gap around the date
             
-            // Top line: from top of item to just above date
+            // Top line: from top of item to just above date (not for first visible item)
             if (topLine && index > 0) {
+                topLine.style.display = 'block';
                 topLine.style.top = '0';
                 topLine.style.height = `${dateTop - gap}px`;
             }
             
-            // Bottom line: from just below date to bottom of item
-            if (bottomLine) {
+            // Bottom line: from just below date to bottom of item (not for last visible item)
+            if (bottomLine && index < projectItems.length - 1) {
                 const bottomStart = dateBottom + gap;
                 const bottomHeight = itemRect.height - bottomStart;
+                bottomLine.style.display = 'block';
                 bottomLine.style.top = `${bottomStart}px`;
                 bottomLine.style.height = `${bottomHeight}px`;
             }
@@ -160,6 +172,42 @@ function initTimelineLines() {
  * EDIT: Change the email address below to your own
  */
 const CONTACT_EMAIL = 'your.email@example.com';
+
+/**
+ * Initialize project filters for the timeline
+ */
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    if (!filterBtns.length || !projectItems.length) return;
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filter = btn.getAttribute('data-filter');
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Filter projects
+            projectItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                
+                if (filter === 'all' || category === filter) {
+                    item.classList.remove('filtered-out');
+                } else {
+                    item.classList.add('filtered-out');
+                }
+            });
+            
+            // Recalculate timeline lines after filter
+            setTimeout(() => {
+                initTimelineLines();
+            }, 350); // Wait for transition to complete
+        });
+    });
+}
 
 function initContactForm() {
     const form = document.getElementById('contact-form');

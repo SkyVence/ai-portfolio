@@ -142,6 +142,22 @@
 						<h2 class="text-4xl font-bold">Projects</h2>
 					</div>
 
+					<!-- Project Filters -->
+					<div class="project-filters animate-on-scroll mb-8">
+						<button class="filter-btn active" data-filter="all">
+							All
+						</button>
+						<button class="filter-btn" data-filter="web">
+							Web
+						</button>
+						<button class="filter-btn" data-filter="prog">
+							Prog
+						</button>
+						<button class="filter-btn" data-filter="gamedev">
+							GameDev
+						</button>
+					</div>
+
 					<div class="projects-timeline">
 						<!--
                         EDIT: To add a new project, copy a project-item div and modify:
@@ -151,7 +167,11 @@
                     -->
 
 						<!-- Project 1 (Most Recent) -->
-						<div class="project-item animate-on-scroll">
+						<!-- EDIT: Add data-category attribute: "web", "prog", or "gamedev" -->
+						<div
+							class="project-item animate-on-scroll"
+							data-category="web"
+						>
 							<div class="timeline-line timeline-line-top"></div>
 							<div
 								class="timeline-line timeline-line-bottom"
@@ -194,7 +214,11 @@
 						</div>
 
 						<!-- Project 2 -->
-						<div class="project-item animate-on-scroll">
+						<!-- EDIT: Add data-category attribute: "web", "prog", or "gamedev" -->
+						<div
+							class="project-item animate-on-scroll"
+							data-category="gamedev"
+						>
 							<div class="timeline-line timeline-line-top"></div>
 							<div
 								class="timeline-line timeline-line-bottom"
@@ -226,7 +250,11 @@
 						</div>
 
 						<!-- Project 3 -->
-						<div class="project-item animate-on-scroll">
+						<!-- EDIT: Add data-category attribute: "web", "prog", or "gamedev" -->
+						<div
+							class="project-item animate-on-scroll"
+							data-category="prog"
+						>
 							<div class="timeline-line timeline-line-top"></div>
 							<div
 								class="timeline-line timeline-line-bottom"
@@ -259,7 +287,11 @@
 						</div>
 
 						<!-- Project 4 (Oldest) -->
-						<div class="project-item animate-on-scroll">
+						<!-- EDIT: Add data-category attribute: "web", "prog", or "gamedev" -->
+						<div
+							class="project-item animate-on-scroll"
+							data-category="web"
+						>
 							<div class="timeline-line timeline-line-top"></div>
 							<div
 								class="timeline-line timeline-line-bottom"
@@ -331,7 +363,7 @@
 								</div>
 								<div class="text-neutral-500">
 									<!-- EDIT: Change date range -->
-									<span>2025 - Current</span>
+									<span>Current - 2025</span>
 								</div>
 							</div>
 							<!-- EDIT: Add relevant coursework or achievements -->
@@ -361,7 +393,7 @@
 								</div>
 								<div class="text-neutral-500">
 									<!-- EDIT: Change date range -->
-									<span>2021 - 2024</span>
+									<span>2024 - 2021</span>
 								</div>
 							</div>
 							<!-- EDIT: Add relevant coursework or achievements -->

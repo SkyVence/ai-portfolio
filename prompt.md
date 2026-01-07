@@ -59,3 +59,6 @@ Add a small readme with a ci tag (skyvence/ai-portfolio) and update the necessar
 
 ## Prompt 9
 Here is an issue for you when hosting the website the image in /img/* doesnt resolve can you fix it ? Do not forget to modify why.html
+
+## Prompt 10
+I still get a 404 in the network tab of my browser and the image doesnt show up.

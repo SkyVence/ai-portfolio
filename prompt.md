@@ -79,3 +79,9 @@ Update readme to reflect the latest changes. Change npx to bun
 
 ## Prompt 4
 Oh weird issue your tagging system doesnt show up correctly and does not work. It seems like on the hosted version it doesn't have styling nor does it work as button
+
+## Prompt 5
+I want to use the picture in /img has favicon can you do it
+
+## Prompt 6
+update why.html with the latest logs

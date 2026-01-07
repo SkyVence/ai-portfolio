@@ -85,3 +85,6 @@ I want to use the picture in /img has favicon can you do it
 
 ## Prompt 6
 update why.html with the latest logs
+
+## Prompt 7
+Modify the docker image to take in the @why/ so i can access via url/why instead of why.html. update the links to reflect this change

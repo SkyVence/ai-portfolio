@@ -3,6 +3,183 @@
    Dark minimalist theme with subtle animations
    ========================================== */
 
+/* ==========================================
+   LIGHT THEME VARIABLES & STYLES
+   ========================================== */
+body.light-theme {
+	background-color: #fafafa;
+	color: #171717;
+}
+
+body.light-theme .bg-neutral-950 {
+	background-color: #fafafa;
+}
+
+body.light-theme .bg-neutral-950\/80 {
+	background-color: rgba(250, 250, 250, 0.8);
+}
+
+body.light-theme .bg-neutral-900\/50 {
+	background-color: rgba(245, 245, 245, 0.5);
+}
+
+body.light-theme .text-neutral-100 {
+	color: #171717;
+}
+
+body.light-theme .text-white {
+	color: #0a0a0a;
+}
+
+body.light-theme .text-neutral-400 {
+	color: #525252;
+}
+
+body.light-theme .text-neutral-500 {
+	color: #737373;
+}
+
+body.light-theme .text-neutral-600 {
+	color: #525252;
+}
+
+body.light-theme .border-neutral-800\/50,
+body.light-theme .border-neutral-800 {
+	border-color: rgba(229, 229, 229, 0.8);
+}
+
+body.light-theme .border-neutral-700 {
+	border-color: #d4d4d4;
+}
+
+body.light-theme .hover\:text-white:hover {
+	color: #0a0a0a;
+}
+
+body.light-theme .hover\:text-neutral-300:hover {
+	color: #404040;
+}
+
+body.light-theme .bg-white {
+	background-color: #171717;
+	color: #fafafa;
+}
+
+body.light-theme .bg-white:hover {
+	background-color: #262626;
+}
+
+body.light-theme .text-neutral-900 {
+	color: #fafafa;
+}
+
+body.light-theme .bg-neutral-800\/50 {
+	background-color: rgba(245, 245, 245, 0.8);
+}
+
+body.light-theme .hover\:bg-neutral-800\/50:hover {
+	background-color: rgba(229, 229, 229, 0.5);
+}
+
+body.light-theme .hover\:border-neutral-500:hover {
+	border-color: #a3a3a3;
+}
+
+/* Light theme for specific components */
+body.light-theme .project-card,
+body.light-theme .education-card {
+	background: rgba(255, 255, 255, 0.8);
+	border-color: #e5e5e5;
+}
+
+body.light-theme .project-card:hover,
+body.light-theme .education-card:hover {
+	border-color: #d4d4d4;
+}
+
+body.light-theme .tag {
+	background: rgba(229, 229, 229, 0.5);
+	border-color: #d4d4d4;
+	color: #525252;
+}
+
+body.light-theme .social-link {
+	border-color: #d4d4d4;
+	color: #525252;
+}
+
+body.light-theme .social-link:hover {
+	border-color: #171717;
+	color: #171717;
+}
+
+body.light-theme .filter-btn {
+	border-color: #d4d4d4;
+	color: #525252;
+}
+
+body.light-theme .filter-btn:hover {
+	border-color: #a3a3a3;
+	color: #171717;
+}
+
+body.light-theme .filter-btn.active {
+	background: #171717;
+	border-color: #171717;
+	color: #fafafa;
+}
+
+body.light-theme .text-gradient {
+	background: linear-gradient(135deg, #171717 0%, #525252 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+body.light-theme .page-transition-overlay {
+	background: #fafafa;
+}
+
+body.light-theme .project-item .timeline-line {
+	background: #d4d4d4;
+}
+
+body.light-theme .project-date {
+	color: #737373;
+}
+
+body.light-theme ::-webkit-scrollbar-track {
+	background: #fafafa;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb {
+	background: #d4d4d4;
+}
+
+body.light-theme ::-webkit-scrollbar-thumb:hover {
+	background: #a3a3a3;
+}
+
+body.light-theme .nav-link::after {
+	background: #171717;
+}
+
+/* Code blocks in why page */
+body.light-theme .code-block {
+	background: rgba(245, 245, 245, 0.9);
+	border-color: #e5e5e5;
+}
+
+body.light-theme .code-block pre {
+	color: #374151;
+}
+
+body.light-theme .code-header {
+	background: rgba(229, 229, 229, 0.8);
+	border-color: #e5e5e5;
+	color: #525252;
+}
+
 /* Smooth scrolling */
 html {
 	scroll-behavior: smooth;
@@ -296,6 +473,68 @@ html {
 		margin-bottom: 0.75rem;
 		text-align: left;
 		background: transparent;
+	}
+	
+	/* Mobile typography adjustments */
+	h1 {
+		font-size: 2.5rem !important;
+		line-height: 1.2;
+	}
+	
+	h2 {
+		font-size: 1.75rem !important;
+	}
+	
+	/* Mobile card adjustments */
+	.project-card,
+	.education-card {
+		padding: 1.25rem;
+	}
+	
+	/* Mobile section spacing */
+	section {
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+	
+	/* Hero section mobile */
+	#about {
+		min-height: auto;
+		padding-top: 6rem;
+	}
+	
+	/* Mobile contact form and info */
+	#contact .grid {
+		gap: 2rem;
+	}
+}
+
+@media (max-width: 640px) {
+	/* Extra small screen adjustments */
+	h1 {
+		font-size: 2rem !important;
+	}
+	
+	.project-card h3,
+	.education-card h3 {
+		font-size: 1.125rem;
+	}
+	
+	/* Adjust social links row */
+	.social-link {
+		width: 44px;
+		height: 44px;
+	}
+	
+	/* Button adjustments */
+	.filter-btn {
+		padding: 0.375rem 1rem;
+		font-size: 0.8125rem;
+	}
+	
+	/* Better touch targets */
+	.nav-link {
+		padding: 0.5rem 0;
 	}
 }
 

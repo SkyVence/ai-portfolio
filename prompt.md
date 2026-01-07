@@ -88,3 +88,14 @@ update why.html with the latest logs
 
 ## Prompt 7
 Modify the docker image to take in the @why/ so i can access via url/why instead of why.html. update the links to reflect this change
+
+# Session 4
+
+## Prompt 0
+I want you to make the porfolio responsive, you will also add a light theme toggle default to dark. Add total view count for the portfolio
+
+## Prompt 1
+Can i use nginx to use real page view instead of localstorage
+
+## Prompt 2
+Ok lets keep local storage

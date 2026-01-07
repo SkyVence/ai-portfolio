@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initTimelineLines();
     initContactForm();
     initProjectFilters();
+    initMobileMenu();
+    initThemeToggle();
+    initViewCounter();
 });
 
 /**
@@ -267,4 +270,149 @@ function isInViewport(el) {
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
+}
+
+/**
+ * Initialize mobile menu functionality
+ */
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    
+    if (!mobileMenuBtn || !mobileMenu) return;
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        
+        if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        } else {
+            mobileMenu.classList.remove('hidden');
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        }
+    });
+    
+    // Close menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+    });
+}
+
+/**
+ * Initialize theme toggle functionality (default: dark)
+ */
+function initThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const body = document.body;
+    
+    // Get saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    // Apply saved theme
+    if (savedTheme === 'light') {
+        body.classList.add('light-theme');
+        updateThemeIcons(true);
+    }
+    
+    // Toggle function
+    function toggleTheme() {
+        const isLight = body.classList.toggle('light-theme');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateThemeIcons(isLight);
+    }
+    
+    // Update icons based on theme
+    function updateThemeIcons(isLight) {
+        const sunIcons = document.querySelectorAll('.sun-icon');
+        const moonIcons = document.querySelectorAll('.moon-icon');
+        
+        sunIcons.forEach(icon => {
+            icon.classList.toggle('hidden', isLight);
+        });
+        moonIcons.forEach(icon => {
+            icon.classList.toggle('hidden', !isLight);
+        });
+    }
+    
+    // Add event listeners
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+    if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    }
+}
+
+/**
+ * Initialize view counter using localStorage
+ * For a real production site, use a backend service
+ */
+function initViewCounter() {
+    const viewCounterEl = document.getElementById('view-counter');
+    if (!viewCounterEl) return;
+    
+    // Get current view count from localStorage
+    let viewCount = parseInt(localStorage.getItem('portfolio_views') || '0', 10);
+    
+    // Check if this is a new session (using sessionStorage)
+    const hasVisited = sessionStorage.getItem('portfolio_visited');
+    
+    if (!hasVisited) {
+        // Increment view count for new sessions
+        viewCount++;
+        localStorage.setItem('portfolio_views', viewCount.toString());
+        sessionStorage.setItem('portfolio_visited', 'true');
+    }
+    
+    // Animate the counter
+    animateCounter(viewCounterEl, viewCount);
+}
+
+/**
+ * Animate counter from 0 to target value
+ * @param {Element} element - Counter element
+ * @param {number} target - Target number
+ */
+function animateCounter(element, target) {
+    const duration = 1000; // 1 second
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * target);
+        
+        element.textContent = current.toLocaleString();
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target.toLocaleString();
+        }
+    }
+    
+    requestAnimationFrame(update);
 }

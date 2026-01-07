@@ -566,3 +566,82 @@ html {
 .hover-lift:hover {
 	transform: translateY(-4px);
 }
+
+/* ==========================================
+   MOBILE MENU & THEME TOGGLE
+   ========================================== */
+/* Ensure icons display correctly */
+.sun-icon,
+.moon-icon,
+.hamburger-icon,
+.close-icon {
+	display: block;
+}
+
+.sun-icon.hidden,
+.moon-icon.hidden,
+.hamburger-icon.hidden,
+.close-icon.hidden {
+	display: none !important;
+}
+
+/* Theme toggle button */
+#theme-toggle,
+#theme-toggle-mobile {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Mobile menu button */
+#mobile-menu-btn {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Mobile menu */
+#mobile-menu {
+	display: none;
+}
+
+#mobile-menu.show {
+	display: block;
+}
+
+/* Light theme adjustments for buttons */
+body.light-theme #theme-toggle,
+body.light-theme #theme-toggle-mobile,
+body.light-theme #mobile-menu-btn {
+	border-color: #d4d4d4;
+}
+
+body.light-theme #theme-toggle:hover,
+body.light-theme #theme-toggle-mobile:hover,
+body.light-theme #mobile-menu-btn:hover {
+	border-color: #a3a3a3;
+}
+
+body.light-theme #mobile-menu {
+	border-color: rgba(229, 229, 229, 0.5);
+}
+
+/* Light theme input fields */
+body.light-theme input,
+body.light-theme textarea {
+	background-color: rgba(245, 245, 245, 0.8);
+	border-color: #d4d4d4;
+	color: #171717;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder {
+	color: #a3a3a3;
+}
+
+body.light-theme input:focus,
+body.light-theme textarea:focus {
+	border-color: #a3a3a3;
+}

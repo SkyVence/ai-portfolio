@@ -68,6 +68,7 @@
 						
 						<!-- Theme Toggle Button -->
 						<button
+							type="button"
 							id="theme-toggle"
 							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors"
 							aria-label="Toggle theme"
@@ -87,6 +88,7 @@
 					<div class="flex items-center gap-4 md:hidden">
 						<!-- Theme Toggle Button (Mobile) -->
 						<button
+							type="button"
 							id="theme-toggle-mobile"
 							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors"
 							aria-label="Toggle theme"
@@ -100,6 +102,7 @@
 						</button>
 						
 						<button
+							type="button"
 							id="mobile-menu-btn"
 							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors"
 							aria-label="Open menu"
@@ -632,9 +635,9 @@
 
 								<div class="space-y-4">
 									<!-- EDIT: Change your email -->
-									<div class="flex items-center gap-4">
+									<div class="flex items-start gap-4">
 										<div
-											class="w-12 h-12 rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center"
+											class="w-12 h-12 rounded-lg bg-neutral-800/50 border border-neutral-700 flex items-center justify-center shrink-0"
 										>
 											<svg
 												class="w-5 h-5 text-neutral-400"
@@ -650,25 +653,27 @@
 												/>
 											</svg>
 										</div>
-										<div>
-											<p class="text-sm text-neutral-500">
-												Email
-											</p>
-											<a
-												href="mailto:antoine.mathie100@gmail.com"
-												class="text-white hover:text-neutral-300 transition-colors"
-												>antoine.mathie100@gmail.com</a
-											>
-										</div>
-										<div>
-											<p class="text-sm text-neutral-500">
-												Studio Email
-											</p>
-											<a
-												href="mailto:antoine.mathie@osadeo.com"
-												class="text-white hover:text-neutral-300 transition-colors"
-												>antoine.mathie@osadeo.com</a
-											>
+										<div class="flex flex-col sm:flex-row sm:gap-8 gap-2">
+											<div>
+												<p class="text-sm text-neutral-500">
+													Email
+												</p>
+												<a
+													href="mailto:antoine.mathie100@gmail.com"
+													class="text-white hover:text-neutral-300 transition-colors text-sm sm:text-base break-all"
+													>antoine.mathie100@gmail.com</a
+												>
+											</div>
+											<div>
+												<p class="text-sm text-neutral-500">
+													Studio Email
+												</p>
+												<a
+													href="mailto:antoine.mathie@osadeo.com"
+													class="text-white hover:text-neutral-300 transition-colors text-sm sm:text-base break-all"
+													>antoine.mathie@osadeo.com</a
+												>
+											</div>
 										</div>
 									</div>
 

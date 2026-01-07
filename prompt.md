@@ -99,3 +99,6 @@ Can i use nginx to use real page view instead of localstorage
 
 ## Prompt 2
 Ok lets keep local storage
+
+## Prompt 3
+The theme button doesnt work, the hamburger menu doesnt showup, make the contact section responsive.

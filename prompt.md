@@ -56,3 +56,6 @@ Update why.html to include the latest logs
 
 ## Prompt 8
 Add a small readme with a ci tag (skyvence/ai-portfolio) and update the necessary file like why.html.
+
+## Prompt 9
+Here is an issue for you when hosting the website the image in /img/* doesnt resolve can you fix it ? Do not forget to modify why.html

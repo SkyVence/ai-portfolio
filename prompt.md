@@ -102,3 +102,9 @@ Ok lets keep local storage
 
 ## Prompt 3
 The theme button doesnt work, the hamburger menu doesnt showup, make the contact section responsive.
+
+## Prompt 4
+None of the button in the header like theme toggle, and hamburger menu button doenst trigger anything.
+
+## Prompt 5
+Okay there is an issue in docker hidden behind cloudflare caching i think since it's working on local

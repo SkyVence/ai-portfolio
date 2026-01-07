@@ -14,7 +14,10 @@
 			rel="stylesheet"
 		/>
 	</head>
-	<body class="bg-neutral-950 text-neutral-100 font-['Inter'] antialiased transition-colors duration-300" id="body">
+	<body
+		class="bg-neutral-950 text-neutral-100 font-['Inter'] antialiased transition-colors duration-300"
+		id="body"
+	>
 		<!-- Page Transition Overlay -->
 		<div class="page-transition-overlay" id="page-transition"></div>
 
@@ -32,7 +35,7 @@
 						<!-- EDIT: Change your name/logo here -->
 						Antoine Mathie
 					</a>
-					
+
 					<!-- Desktop Navigation -->
 					<div class="hidden md:flex items-center gap-8">
 						<ul class="flex gap-8">
@@ -65,60 +68,126 @@
 								>
 							</li>
 						</ul>
-						
+
 						<!-- Theme Toggle Button -->
 						<button
 							type="button"
 							id="theme-toggle"
-							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors"
+							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors cursor-pointer"
 							aria-label="Toggle theme"
 						>
 							<!-- Sun icon (shown in dark mode) -->
-							<svg class="w-5 h-5 text-neutral-400 sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+							<svg
+								class="w-5 h-5 text-neutral-400 sun-icon"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+								/>
 							</svg>
 							<!-- Moon icon (shown in light mode) -->
-							<svg class="w-5 h-5 text-neutral-600 moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+							<svg
+								class="w-5 h-5 text-neutral-600 moon-icon"
+								style="display: none"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+								/>
 							</svg>
 						</button>
 					</div>
-					
+
 					<!-- Mobile Menu Button -->
 					<div class="flex items-center gap-4 md:hidden">
 						<!-- Theme Toggle Button (Mobile) -->
 						<button
 							type="button"
 							id="theme-toggle-mobile"
-							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors"
+							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors cursor-pointer"
 							aria-label="Toggle theme"
 						>
-							<svg class="w-5 h-5 text-neutral-400 sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+							<svg
+								class="w-5 h-5 text-neutral-400 sun-icon"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+								/>
 							</svg>
-							<svg class="w-5 h-5 text-neutral-600 moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+							<svg
+								class="w-5 h-5 text-neutral-600 moon-icon"
+								style="display: none"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+								/>
 							</svg>
 						</button>
-						
+
 						<button
 							type="button"
 							id="mobile-menu-btn"
-							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors"
+							class="p-2 rounded-lg border border-neutral-700 hover:border-neutral-500 transition-colors cursor-pointer"
 							aria-label="Open menu"
 						>
-							<svg class="w-6 h-6 text-neutral-400 hamburger-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+							<svg
+								class="w-6 h-6 text-neutral-400 hamburger-icon"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M4 6h16M4 12h16M4 18h16"
+								/>
 							</svg>
-							<svg class="w-6 h-6 text-neutral-400 close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+							<svg
+								class="w-6 h-6 text-neutral-400 close-icon"
+								style="display: none"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="1.5"
+									d="M6 18L18 6M6 6l12 12"
+								/>
 							</svg>
 						</button>
 					</div>
 				</div>
-				
+
 				<!-- Mobile Menu -->
-				<div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-neutral-800/50 pt-4">
+				<div
+					id="mobile-menu"
+					class="hidden md:hidden mt-4 pb-4 border-t border-neutral-800/50 pt-4"
+				>
 					<ul class="flex flex-col gap-4">
 						<li>
 							<a
@@ -653,9 +722,13 @@
 												/>
 											</svg>
 										</div>
-										<div class="flex flex-col sm:flex-row sm:gap-8 gap-2">
+										<div
+											class="flex flex-col sm:flex-row sm:gap-8 gap-2"
+										>
 											<div>
-												<p class="text-sm text-neutral-500">
+												<p
+													class="text-sm text-neutral-500"
+												>
 													Email
 												</p>
 												<a
@@ -665,7 +738,9 @@
 												>
 											</div>
 											<div>
-												<p class="text-sm text-neutral-500">
+												<p
+													class="text-sm text-neutral-500"
+												>
 													Studio Email
 												</p>
 												<a
@@ -787,9 +862,24 @@
 			>
 				<!-- View Counter -->
 				<div class="flex justify-center items-center gap-2 mb-4">
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+					<svg
+						class="w-4 h-4"
+						fill="none"
+						stroke="currentColor"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+							d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+						/>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="1.5"
+							d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+						/>
 					</svg>
 					<span id="view-counter">0</span> views
 				</div>

@@ -278,31 +278,32 @@ function isInViewport(el) {
 function initMobileMenu() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const hamburgerIcon = mobileMenuBtn?.querySelector('.hamburger-icon');
-    const closeIcon = mobileMenuBtn?.querySelector('.close-icon');
     
-    if (!mobileMenuBtn || !mobileMenu || !hamburgerIcon || !closeIcon) {
-        console.log('Mobile menu elements not found');
-        return;
-    }
+    if (!mobileMenuBtn || !mobileMenu) return;
+    
+    const hamburgerIcon = mobileMenuBtn.querySelector('.hamburger-icon');
+    const closeIcon = mobileMenuBtn.querySelector('.close-icon');
     
     function openMenu() {
-        mobileMenu.classList.remove('hidden');
-        mobileMenu.classList.add('show');
-        hamburgerIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
+        mobileMenu.style.display = 'block';
+        if (hamburgerIcon) hamburgerIcon.style.display = 'none';
+        if (closeIcon) closeIcon.style.display = 'block';
     }
     
     function closeMenu() {
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('show');
-        hamburgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
+        mobileMenu.style.display = 'none';
+        if (hamburgerIcon) hamburgerIcon.style.display = 'block';
+        if (closeIcon) closeIcon.style.display = 'none';
     }
     
+    // Initialize closed state
+    closeMenu();
+    
     mobileMenuBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         e.stopPropagation();
-        const isOpen = mobileMenu.classList.contains('show');
+        
+        const isOpen = mobileMenu.style.display === 'block';
         
         if (isOpen) {
             closeMenu();
@@ -362,19 +363,11 @@ function initThemeToggle() {
         const moonIcons = document.querySelectorAll('.moon-icon');
         
         sunIcons.forEach(icon => {
-            if (isLight) {
-                icon.classList.add('hidden');
-            } else {
-                icon.classList.remove('hidden');
-            }
+            icon.style.display = isLight ? 'none' : 'block';
         });
         
         moonIcons.forEach(icon => {
-            if (isLight) {
-                icon.classList.remove('hidden');
-            } else {
-                icon.classList.add('hidden');
-            }
+            icon.style.display = isLight ? 'block' : 'none';
         });
     }
     
